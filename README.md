@@ -1,2 +1,2 @@
 # contact-list
-Simple projetc for lab use.
+Simple project for lab use.
