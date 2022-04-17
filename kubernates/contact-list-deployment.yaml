@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: contact-list-deployment
+spec:
+  template:
+    metadata:
+      name: contact-list
+      labels:
+        app: contact-list
+    spec:
+      containers:
+        - name: contact-list-container
+          image: hsfigueiredo1/contact-list:0.0.1-SNAPSHOT
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: contact-list-configmap
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8080
+            periodSeconds: 10
+            failureThreshold: 3
+            initialDelaySeconds: 20
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 8080
+            periodSeconds: 10
+            failureThreshold: 5
+            initialDelaySeconds: 3
+          resources:
+            requests:
+              cpu: 10m
+  replicas: 1
+  selector:
+    matchLabels:
+      app: contact-list

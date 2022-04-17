@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: contact-list-configmap
+data:
+  DB_HOST: '10.97.248.55'
+  DB_PORT: '3306'
+  DB_USER: xx
+  DB_PASS: xx
+  DB_NAME: meu_banco
