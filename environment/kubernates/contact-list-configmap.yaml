@@ -3,8 +3,8 @@ kind: ConfigMap
 metadata:
   name: contact-list-configmap
 data:
-  DB_HOST: '10.97.248.55'
+  DB_HOST: '10.102.221.240'
   DB_PORT: '3306'
   DB_USER: xx
   DB_PASS: xx
-  DB_NAME: meu_banco
+  DB_NAME: xx

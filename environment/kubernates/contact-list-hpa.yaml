@@ -8,11 +8,11 @@ spec:
     kind: Deployment
     name: contact-list-deployment
   minReplicas: 1
-  maxReplicas: 4
+  maxReplicas: 3
   metrics:
     - type: Resource
       resource:
         name: cpu
         target:
           type: Utilization
-          averageUtilization: 85
+          averageUtilization: 90

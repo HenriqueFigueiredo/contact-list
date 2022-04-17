@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus-deployment
+spec:
+  template:
+    metadata:
+      name: prometheus
+      labels:
+        app: prometheus
+    spec:
+      containers:
+        - name: prometheus-container
+          image: hsfigueiredo1/prometheus-custom:0.0.4
+          ports:
+            - containerPort: 9090
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prometheus

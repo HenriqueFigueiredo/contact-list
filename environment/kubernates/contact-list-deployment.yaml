@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
         - name: contact-list-container
-          image: hsfigueiredo1/contact-list:0.0.1-SNAPSHOT
+          image: hsfigueiredo1/contact-list:0.0.3-SNAPSHOT
           ports:
             - containerPort: 8080
           envFrom:
