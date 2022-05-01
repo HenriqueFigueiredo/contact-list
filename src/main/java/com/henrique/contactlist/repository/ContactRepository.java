@@ -1,6 +1,6 @@
 package com.henrique.contactlist.repository;
 
-import com.henrique.contactlist.model.Contact;
+import com.henrique.contactlist.repository.model.Contact;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,0 +1,1 @@
+INSERT INTO contato (nome, telefone, email, uuid) VALUES ('test delete', '44444444', 'name4@email.com', '1d32ffec-c989-11ec-9d64-0242ac120002');

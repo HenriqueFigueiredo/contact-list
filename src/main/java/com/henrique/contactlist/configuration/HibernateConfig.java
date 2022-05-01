@@ -19,9 +19,9 @@ import java.util.Properties;
 //@EnableTransactionManagement //for enable the @Trnsaction from javax
 public class HibernateConfig {
 
-    @Value("${DB_HOST}") private String dbHost;
-    @Value("${DB_PORT}") private String dbPort;
-    @Value("${DB_NAME}") private String dbName;
+    @Value("${DB_URL}") private String dbURL;
+    @Value("${DB_DRIVER_CLASS_NAME}") private String dbDriver;
+    @Value("${DB_DIALECT}") private String dbDialect;
     @Value("${DB_USER}") private String dbUser;
     @Value("${DB_PASS}") private String dbPass;
 
@@ -29,7 +29,7 @@ public class HibernateConfig {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan("com.henrique.contactlist.model");
+        sessionFactory.setPackagesToScan("com.henrique.contactlist.repository.model");
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
     }
@@ -37,8 +37,8 @@ public class HibernateConfig {
     @Bean()
     public DataSource dataSource() {
         BasicDataSource dataSource = new BasicDataSource();
-        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl(String.format("jdbc:mysql://%s:%s/%s", this.dbHost, this.dbPort, this.dbName));
+        dataSource.setDriverClassName(dbDriver);
+        dataSource.setUrl(this.dbURL);
         dataSource.setUsername(this.dbUser);
         dataSource.setPassword(this.dbPass);
         return dataSource;
@@ -53,7 +53,9 @@ public class HibernateConfig {
 
     private final Properties hibernateProperties() {
         Properties hibernateProperties = new Properties();
-        hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect");
+        hibernateProperties.setProperty("hibernate.dialect", dbDialect);
+        hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "create");
+        hibernateProperties.setProperty("hibernate.show_sql", "true");
         return hibernateProperties;
     }
 }

@@ -1,4 +1,4 @@
-package com.henrique.contactlist.dto;
+package com.henrique.contactlist.controller.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,6 +1,6 @@
 package com.henrique.contactlist.repository;
 
-import com.henrique.contactlist.model.Contact;
+import com.henrique.contactlist.repository.model.Contact;
 
 import java.util.List;
 import java.util.Optional;

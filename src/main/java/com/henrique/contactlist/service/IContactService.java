@@ -1,8 +1,8 @@
 package com.henrique.contactlist.service;
 
-import com.henrique.contactlist.dto.ContactDTO;
-import com.henrique.contactlist.dto.NewContactDTO;
-import com.henrique.contactlist.dto.UpdateContactDTO;
+import com.henrique.contactlist.controller.dto.ContactDTO;
+import com.henrique.contactlist.controller.dto.NewContactDTO;
+import com.henrique.contactlist.controller.dto.UpdateContactDTO;
 
 import java.util.List;
 

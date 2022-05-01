@@ -1,4 +1,4 @@
-package com.henrique.contactlist.model;
+package com.henrique.contactlist.repository.model;
 
 import lombok.Getter;
 import lombok.Setter;

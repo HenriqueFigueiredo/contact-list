@@ -1,0 +1,1 @@
+INSERT INTO contato (nome, telefone, email, uuid) VALUES ('test search', '11111111', 'name1@email.com', '1d32fc40-c989-11ec-9d64-0242ac120002');

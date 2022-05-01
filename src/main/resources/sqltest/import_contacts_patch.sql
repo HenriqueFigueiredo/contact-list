@@ -1,0 +1,1 @@
+INSERT INTO contato (nome, telefone, email, uuid) VALUES ('test path', '33333333', 'name3@email.com', '1d32fefc-c989-11ec-9d64-0242ac120002');

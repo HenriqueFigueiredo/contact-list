@@ -1,17 +1,17 @@
 package com.henrique.contactlist.service;
 
-import com.henrique.contactlist.dto.ContactDTO;
-import com.henrique.contactlist.dto.NewContactDTO;
-import com.henrique.contactlist.dto.UpdateContactDTO;
-import com.henrique.contactlist.mapper.ContactMapper;
-import com.henrique.contactlist.model.Contact;
+import com.henrique.contactlist.controller.dto.ContactDTO;
+import com.henrique.contactlist.controller.dto.NewContactDTO;
+import com.henrique.contactlist.controller.dto.UpdateContactDTO;
 import com.henrique.contactlist.repository.IContactRepository;
+import com.henrique.contactlist.repository.model.Contact;
+import com.henrique.contactlist.service.mapper.ContactMapper;
+import com.henrique.contactlist.service.validation.ValidContact;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 import static java.util.stream.Collectors.toList;
 
@@ -26,9 +26,9 @@ public class ContactService implements IContactService {
         this.contactMapper = contactMapper;
     }
 
-    public ContactDTO create(final NewContactDTO newContactDTO) {
-        final Contact contact = this.contactMapper.toContact(newContactDTO);
-        contact.setUuid(UUID.randomUUID().toString());
+    public ContactDTO create(final NewContactDTO dto) {
+        final ValidContact validContact = new ValidContact(dto.getName(), dto.getPhone(), dto.getEmail());
+        final Contact contact = this.contactMapper.toContact(validContact);
         return this.contactMapper.toContactDTO(this.contactRepository.create(contact));
     }
 
@@ -37,12 +37,13 @@ public class ContactService implements IContactService {
     }
 
     @Transactional
-    public void update(final String uuid, final UpdateContactDTO contactDTO) {
+    public void update(final String uuid, final UpdateContactDTO dto) {
+        final ValidContact validContact = new ValidContact(dto.getName(), dto.getPhone(), dto.getEmail());
         final Optional<Contact> contact = this.contactRepository.find(uuid);
         contact.ifPresent(ct -> {
-            ct.setName(contactDTO.getName());
-            ct.setPhone(contactDTO.getPhone());
-            ct.setEmail(contactDTO.getEmail());
+            ct.setName(validContact.getName());
+            ct.setPhone(validContact.getPhone());
+            ct.setEmail(validContact.getEmail());
             this.contactRepository.update(ct);
         });
     }

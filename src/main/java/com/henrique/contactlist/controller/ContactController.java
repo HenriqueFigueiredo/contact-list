@@ -1,8 +1,8 @@
 package com.henrique.contactlist.controller;
 
-import com.henrique.contactlist.dto.ContactDTO;
-import com.henrique.contactlist.dto.NewContactDTO;
-import com.henrique.contactlist.dto.UpdateContactDTO;
+import com.henrique.contactlist.controller.dto.ContactDTO;
+import com.henrique.contactlist.controller.dto.NewContactDTO;
+import com.henrique.contactlist.controller.dto.UpdateContactDTO;
 import com.henrique.contactlist.service.IContactService;
 import io.micrometer.core.annotation.Counted;
 import io.micrometer.core.annotation.Timed;
