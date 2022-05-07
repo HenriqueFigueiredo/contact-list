@@ -86,7 +86,7 @@
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
-			<scope>test</scope>
+			<!--<scope>test</scope>-->
 		</dependency>
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
@@ -151,10 +151,11 @@
 <!--					</execution>-->
 <!--				</executions>-->
 				<configuration>
-					<repository>hsfigueiredo1/contact-list</repository>
+					<repository>myrepo/contact-list</repository>
 					<username>${env.DOCKERHUB_USERNAME}</username>
 					<password>${env.DOCKERHUB_PASSWORD}</password>
-					<tag>${project.version}</tag>
+<!--					<tag>${project.version}</tag>-->
+					<tag>latest</tag>
 					<skipDockerInfo>true</skipDockerInfo>
 				</configuration>
 			</plugin>
